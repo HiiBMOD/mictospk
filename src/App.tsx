@@ -61,15 +61,22 @@ export default function App() {
         audio: {
           deviceId: selectedDeviceId ? { exact: selectedDeviceId } : undefined,
           echoCancellation: echoCancellation,
-          noiseSuppression: echoCancellation, // Usually bundled with echo cancellation for voice
-          autoGainControl: false, // Disable for purer sound/lower latency
+          noiseSuppression: echoCancellation,
+          autoGainControl: false,
+          channelCount: 1, // 모노 채널로 강제하여 처리량 절반으로 감소 (지연 감소)
+          // @ts-ignore - 크롬/안드로이드 전용 숨겨진 오디오 처리 비활성화 (극한의 Raw Audio)
+          googEchoCancellation: echoCancellation,
+          googAutoGainControl: false,
+          googNoiseSuppression: echoCancellation,
+          googHighpassFilter: false,
+          googTypingNoiseDetection: false,
         }
       });
       streamRef.current = stream;
 
-      // Initialize AudioContext with lowest latency hint
+      // Initialize AudioContext with lowest latency hint (0.0 forces minimum buffer in some browsers)
       const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
-      const ctx = new AudioContextClass({ latencyHint: 'interactive' });
+      const ctx = new AudioContextClass({ latencyHint: 0.0 });
       audioCtxRef.current = ctx;
 
       const source = ctx.createMediaStreamSource(stream);
