@@ -118,7 +118,7 @@ export default function App() {
         <div className="p-6 border-b border-zinc-800 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className={`w-3 h-3 rounded-full ${isLive ? 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.8)] animate-pulse' : 'bg-zinc-700'}`} />
-            <h1 className="text-lg font-semibold tracking-tight">Live Mic Monitor</h1>
+            <h1 className="text-lg font-semibold tracking-tight">라이브 마이크 모니터</h1>
           </div>
           <Radio className={`w-5 h-5 ${isLive ? 'text-red-500' : 'text-zinc-600'}`} />
         </div>
@@ -129,7 +129,7 @@ export default function App() {
           {/* Device Selector */}
           <div className="space-y-3">
             <label className="text-xs font-mono text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-              <Mic className="w-4 h-4" /> Input Device
+              <Mic className="w-4 h-4" /> 입력 장치
             </label>
             <select 
               className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/50 appearance-none disabled:opacity-50"
@@ -142,7 +142,7 @@ export default function App() {
               ) : (
                 devices.map(device => (
                   <option key={device.deviceId} value={device.deviceId}>
-                    {device.label || `Microphone ${device.deviceId.substring(0, 5)}...`}
+                    {device.label || `마이크 ${device.deviceId.substring(0, 5)}...`}
                   </option>
                 ))
               )}
@@ -153,7 +153,7 @@ export default function App() {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <label className="text-xs font-mono text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-                <Volume2 className="w-4 h-4" /> Output Volume
+                <Volume2 className="w-4 h-4" /> 출력 볼륨
               </label>
               <span className="text-xs font-mono text-zinc-500">{Math.round(volume * 100)}%</span>
             </div>
@@ -171,7 +171,7 @@ export default function App() {
           {/* Settings Toggles */}
           <div className="space-y-3">
             <label className="text-xs font-mono text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-              <Settings className="w-4 h-4" /> Audio Settings
+              <Settings className="w-4 h-4" /> 오디오 설정
             </label>
             <label className="flex items-center justify-between p-3 bg-zinc-950 border border-zinc-800 rounded-xl cursor-pointer hover:bg-zinc-800/50 transition-colors">
               <div className="flex flex-col">
@@ -210,11 +210,11 @@ export default function App() {
           >
             {isLive ? (
               <>
-                <Square className="w-5 h-5 fill-current" /> Stop Monitoring
+                <Square className="w-5 h-5 fill-current" /> <span>모니터링 중지</span>
               </>
             ) : (
               <>
-                <Mic className="w-5 h-5" /> Start Live Mic
+                <Mic className="w-5 h-5" /> <span>라이브 마이크 시작</span>
               </>
             )}
           </button>
