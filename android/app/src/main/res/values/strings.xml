@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Low Latency Mic</string>
+    <string name="title_activity_main">Low Latency Mic</string>
+    <string name="package_name">com.example.micmonitor</string>
+    <string name="custom_url_scheme">com.example.micmonitor</string>
+</resources>

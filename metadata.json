@@ -1,0 +1,7 @@
+{
+  "name": "Low Latency Mic Monitor",
+  "description": "A web app to route USB microphone input to speakers with minimal latency.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
